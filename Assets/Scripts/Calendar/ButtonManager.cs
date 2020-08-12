@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -19,10 +20,17 @@ public class ButtonManager : MonoBehaviour
 
 	#region Public Methods
 
-	public void Initialize(string label, Action<(string, string)> clickEventHandler)
+	public void Initialize(string label, Action<(string, string)> clickEventHandler, int progress)
 	{
+		float fill = 0.0f;
+		if (progress == 1)
+			fill = 0.333f;
+		else if (progress == 2)
+			fill = 0.666f;
+		else if (progress == 3)
+			fill = 1.0f;
 		this.label.text = label;
-
+		this.GetComponent<Image>().fillAmount = fill;
 		buttonAction += () => clickEventHandler((label, label));
 		button.onClick.AddListener(buttonAction);
 	}

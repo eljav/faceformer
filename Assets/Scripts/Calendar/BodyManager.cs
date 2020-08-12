@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.UIElements;
+using UnityEngine.Scripting;
+using UnityEngine.UI;
 
 public class BodyManager : MonoBehaviour
 {
@@ -48,10 +51,9 @@ public class BodyManager : MonoBehaviour
 		{
 			var instance = Instantiate(a == 0 ? placeHolderPrefab : buttonPrefab, transform);
 			var buttonManager = instance.GetComponent<ButtonManager>();
-
+			int fill = PlayerPrefs.GetInt(DateTime.Today.ToString());
 			if (buttonManager != null)
-				buttonManager.Initialize(a.ToString(), clickEventHandler);
-
+				buttonManager.Initialize(a.ToString(), clickEventHandler, fill);
 			cells.Add(instance);
 		}
 	}

@@ -2,6 +2,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
@@ -29,6 +31,8 @@ public class Timer : MonoBehaviour
     bool primeraVez = true;
     bool pulsar = false;
     int counter = 0;
+
+    static int progress = 0;
 
     void Start()
     {
@@ -80,9 +84,14 @@ public class Timer : MonoBehaviour
                 progressText.text = counter + " / " + maxReps;
             }
         }
-        if (maxReps == 20)
+        if (counter == 20)
         {
-
+            if (progress < 3)
+            {
+                progress++;
+                PlayerPrefs.SetInt(DateTime.Today.ToString(), progress);
+                counter = 21;
+            }
         }
     }
 
@@ -139,5 +148,9 @@ public class Timer : MonoBehaviour
     void PulsateText(TextMeshProUGUI text)
     {
         text.transform.localScale += Vector3.one * 1f * Time.deltaTime;
+    }
+    public void Return()
+    {
+        SceneManager.LoadScene("MenuScene");
     }
 }
