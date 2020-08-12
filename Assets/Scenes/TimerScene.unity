@@ -1578,7 +1578,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 1897683650}
   progressText: {fileID: 1076443517}
-  instruccionTest: {fileID: 1724842990}
+  instruccionText: {fileID: 1724842990}
   cronometroText: {fileID: 107689485}
   countdownTimerText: {fileID: 1976908674}
   startButton: {fileID: 1773846324}

@@ -9,7 +9,7 @@ public class Timer : MonoBehaviour
 {
     public Canvas canvas;
     public TextMeshProUGUI progressText;
-    public TextMeshProUGUI instruccionTest;
+    public TextMeshProUGUI instruccionText;
     public TextMeshProUGUI cronometroText;
     public TextMeshProUGUI countdownTimerText;
     public Button startButton;
@@ -51,7 +51,7 @@ public class Timer : MonoBehaviour
         if (timerActive && counter < 20)
         {
             timeStart += Time.deltaTime;
-            SetInstruccionTest(apretar);
+            SetInstruccionText(apretar);
             SetBackgroundColor(apretar);
             cronometroText.text = timeStart.ToString("f0");
             if (pulsar)
@@ -92,6 +92,12 @@ public class Timer : MonoBehaviour
                 PlayerPrefs.SetInt(DateTime.Today.ToString(), progress);
                 counter = 21;
             }
+        }
+        if (counter > 20)
+        {
+            instruccionText.text = "Completado";
+            startButton.image.sprite = playSprite;
+            startButton.interactable = false;
         }
     }
 
@@ -135,9 +141,9 @@ public class Timer : MonoBehaviour
         fill.fillAmount = fillAmount;
     }
 
-    void SetInstruccionTest(bool apretar)
+    void SetInstruccionText(bool apretar)
     {
-        instruccionTest.text = apretar ? activeText : restText;
+        instruccionText.text = apretar ? activeText : restText;
     }
 
     void SetBackgroundColor(bool apretar)

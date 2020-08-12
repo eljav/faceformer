@@ -23,6 +23,5 @@ public class MenuManager : MonoBehaviour
         else if (progress == 3)
             fill = 1.0f;
         relleno.fillAmount = fill;
-        print(progress);
     }
 }
